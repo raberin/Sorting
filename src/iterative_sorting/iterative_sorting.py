@@ -1,6 +1,7 @@
 # Complete Insertion Sort
-def insertion_sort(arr):
-    return arr
+# def insertion_sort(arr):
+
+#     return arr
 
 
 def selection_sort(arr):
