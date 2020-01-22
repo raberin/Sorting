@@ -13,23 +13,22 @@ def binary_search(arr, target):
     lowIndex = 0
     highIndex = len(arr)-1
 
-    while lowIndex < highIndex:
+    while lowIndex <= highIndex:
         # Set middleIndex // syntax estimates to nearest number
         middleIndex = (lowIndex + highIndex) // 2
         print(
             f"middleIndex = {middleIndex}, arr[middleIndex] = {arr[middleIndex]}")
         if target == arr[middleIndex]:
             return middleIndex
+        elif target < arr[middleIndex]:
+            highIndex = middleIndex - 1
         else:
-            if target < arr[middleIndex]:
-                highIndex = middleIndex
-            else:
-                lowIndex = middleIndex
+            lowIndex = middleIndex + 1
     return -1
 
 
 arr1 = [-9, -8, -6, -4, -3, -2, 0, 1, 2, 3, 5, 7, 8, 9]
-print(binary_search(arr1, -8))
+print(binary_search(arr1, -3))
 
 # # STRETCH: write a recursive implementation of Binary Search
 
@@ -45,10 +44,10 @@ def binary_search_recursive(arr, target, lowIndex, highIndex):
         return middleIndex
     else:
         if arr[middleIndex] < target:
-            return binary_search_recursive(arr, target, middleIndex, highIndex)
+            return binary_search_recursive(arr, target, middleIndex + 1, highIndex)
         else:
-            return binary_search_recursive(arr, target, lowIndex, middleIndex)
+            return binary_search_recursive(arr, target, lowIndex, middleIndex - 1)
 
 
-myArr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-print(binary_search_recursive(myArr, 7, 0, len(myArr)))
+myArr = [-9, -8, -6, -4, -3, -2, 0, 1, 2, 3, 5, 7, 8, 9]
+print(binary_search_recursive(myArr, -8, 0, len(myArr)))
