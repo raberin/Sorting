@@ -3,15 +3,18 @@ def merge(arrA, arrB):
     merged_arr = []
     arrA_index = 0
     arrB_index = 0
+    # Until the merged_arr is as big as both arrays combined
     while len(merged_arr) < len(arrA) + len(arrB):
         print(
             f"arrA_index = {arrA_index}, arrB_index = {arrB_index}\n {merged_arr}")
+        # If arrB is empty add arrA elements and vice versa
         if len(arrB) <= arrB_index:
             merged_arr.append(arrA[arrA_index])
             arrA_index += 1
         elif len(arrA) <= arrA_index:
             merged_arr.append(arrB[arrB_index])
             arrB_index += 1
+        # Compare which element is smaller and push to merged
         elif arrA[arrA_index] <= arrB[arrB_index]:
             merged_arr.append(arrA[arrA_index])
             arrA_index += 1
@@ -28,14 +31,15 @@ def merge(arrA, arrB):
 
 # # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort(arr):
-    # TO-DO
+    # Base Case
     if len(arr) < 2:
         return arr
-
+    # Make midpt variable
     middlePoint = len(arr) // 2
+    # Recurse the left and right sides of the array
     sortLeft = merge_sort(arr[0:middlePoint])
     sortRight = merge_sort(arr[middlePoint:len(arr)])
-
+    # Merge the arrays
     return merge(sortLeft, sortRight)
 
 
