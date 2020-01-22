@@ -47,9 +47,39 @@ arr1 = [1, 3, 5, 6, 7, 2, 4, 8, 9]
 
 print(merge_sort(arr1))
 
-# def quick_sort(arr):
 
-#     # STRETCH: implement an in-place merge sort algorithm
+def quick_sort(arr):
+    # Base case
+    if len(arr) == 0:
+        return arr
+    # Set pivot point last number in arr
+    pivot = arr[len(arr) - 1]
+    # Create left and right arrays
+    left_arr = []
+    right_arr = []
+    # Loop until right before last element
+    for i in range(len(arr) - 1):
+       # if pivot < arr[i] push to rightArr
+        if pivot < arr[i]:
+            right_arr.append(arr[i])
+        # if pivot > arr[i] push to leftArr
+        else:
+            left_arr.append(arr[i])
+    # recurse left + right
+    left_arr_sorted = quick_sort(left_arr)
+    right_arr_sorted = quick_sort(right_arr)
+    print(
+        f"left_arr_sorted {left_arr_sorted} + right_arr_sorted {right_arr_sorted}")
+    # return left + pivot + right
+    return left_arr_sorted + [pivot] + right_arr_sorted
+
+
+arr1 = [1, 3, 5, 6, 7, 2, 4, 8, 9]
+
+print(quick_sort(arr1))
+
+
+# STRETCH: implement an in-place merge sort algorithm
 
 
 # def merge_in_place(arr, start, mid, end):
